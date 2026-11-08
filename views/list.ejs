@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>TodoList</title>
+</head>
+<body>
+  <main>
+    <h1><%= current %></h1>
+
+    <div class="todo-box">   
+      <ul>
+  <% myList.forEach((item, index) => { %>
+    <li>
+      <label class="flex">
+        <input type="checkbox">
+        <span><%= item %></span>
+      </label>
+
+     <form action="/delete" method="post">
+  <input type="hidden" name="list" value="<%= current %>">
+  <button
+    type="submit"
+    class="delet"
+    name="index"
+    value="<%= index %>"
+  >Remove</button>
+</form>
+    </li>
+    
+  <% }); %>
+</ul>
+
+      <form action="/" method="post">
+        <input
+          type="text"
+          name="input"
+          placeholder="New Item"
+          aria-label="New task"
+          autocomplete="off"
+          required
+        >
+        <button class="main" type="submit" name="list" value="<%= current %>">+</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
